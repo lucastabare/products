@@ -18,7 +18,7 @@ const Create = () => {
   };
 
   return (
-    <div>
+    <>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -50,7 +50,7 @@ const Create = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

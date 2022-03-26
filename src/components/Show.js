@@ -51,7 +51,7 @@ const Show = () => {
   //7-devolvemos vista de nuestro componente
 
   return (
-    <div>
+    <>
       <div className="container">
         <div className="row">
           <div className="col">
@@ -99,7 +99,7 @@ const Show = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
