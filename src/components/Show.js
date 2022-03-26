@@ -18,7 +18,7 @@ const Show = () => {
     const data = await getDocs(productsCollection);
     //console.log(data.docs);
     setProducts(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-    console.log(products);
+    //console.log(products);
   };
   //4-funcion para eliminar un doc
   const deleteProduct = async (id) => {
