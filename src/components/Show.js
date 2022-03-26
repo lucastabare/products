@@ -22,12 +22,27 @@ const Show = () => {
   };
   //4-funcion para eliminar un doc
   const deleteProduct = async (id) => {
-    const productDoc = doc(dc, "products", id);
+    const productDoc = doc(db, "products", id);
     await deleteDoc(productDoc);
     getProducts();
   };
   //5-funcion de confirmacion para Sweet Alert
-
+  const confirmDelete = (id) => {
+    MySwal.fire({
+      title: "¿Remove the product?",
+      text: "you won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteProduct(id);
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
   //6-usamos useEffect
   useEffect(() => {
     getProducts();
@@ -67,6 +82,7 @@ const Show = () => {
                       <button
                         onClick={() => {
                           deleteProduct(product.id);
+                          console.log("tocando");
                         }}
                         className="btn btn-danger"
                       >
