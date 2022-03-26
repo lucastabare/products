@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { collection, getDocs, getDoc, deleteDoc } from "firebase/firestore";
+import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -29,17 +29,18 @@ const Show = () => {
   //5-funcion de confirmacion para Sweet Alert
   const confirmDelete = (id) => {
     MySwal.fire({
-      title: "¿Remove the product?",
-      text: "you won't be able to revert this!",
+      title: "¿Eliminar el producto?",
+      text: "No podra volver atras!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#d33",
       cancelButtonColor: "#3085d6",
-      confirmButtonText: "yes, delete it!",
+      cancelButtonText: "Cancelar",
+      confirmButtonText: "Si, Eliminar!",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteProduct(id);
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("Eliminado!", "Su producto fue eliminado.", "success");
       }
     });
   };
@@ -61,9 +62,11 @@ const Show = () => {
             </div>
             <table className="table table-dark table-hover">
               <thead>
-                <th>Descripcion</th>
-                <th>Stock</th>
-                <th>Acciones</th>
+                <tr>
+                  <th>Descripcion</th>
+                  <th>Stock</th>
+                  <th>Acciones</th>
+                </tr>
               </thead>
 
               <tbody>
@@ -81,8 +84,8 @@ const Show = () => {
                       </Link>
                       <button
                         onClick={() => {
-                          deleteProduct(product.id);
-                          console.log("tocando");
+                          confirmDelete(product.id);
+                          //console.log("tocando");
                         }}
                         className="btn btn-danger"
                       >
