@@ -3,6 +3,7 @@ import Show from "./components/Show";
 import Create from "./components/Create";
 import Edit from "./components/Edit";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/edit/:id" element={<Edit />} />
         </Routes>
       </BrowserRouter>
+      <Footer />
     </div>
   );
 }

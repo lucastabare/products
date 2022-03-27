@@ -32,6 +32,11 @@ const Edit = () => {
     }
   };
 
+  const volver = (e) => {
+    e.preventDefault;
+    navigate(`/`);
+  };
+
   useEffect(() => {
     getProductById(id);
     //eslint-disable-netx-line
@@ -40,12 +45,12 @@ const Edit = () => {
   return (
     <>
       <div className="container">
-        <div className="row">
+        <h1>Actualizar Producto</h1>
+        <div className="row crear-product">
           <div className="col">
-            <h1>Actualizar Producto</h1>
             <form onSubmit={update}>
               <div className="mb-3">
-                <label className="form-label">Descripcion</label>
+                <label className="form-label label-crear">Descripcion</label>
                 <input
                   value={description}
                   onChange={(e) => setDescription(e.target.value)}
@@ -55,7 +60,7 @@ const Edit = () => {
               </div>
 
               <div className="mb-3">
-                <label className="form-label">Stock</label>
+                <label className="form-label label-crear">Stock</label>
                 <input
                   value={stock}
                   onChange={(e) => setStock(e.target.value)}
@@ -65,6 +70,14 @@ const Edit = () => {
               </div>
               <button type="submit" className="btn btn-primary">
                 Actualizar Producto
+              </button>
+
+              <button
+                type="submit"
+                className="btn btn-success"
+                onClick={volver}
+              >
+                Volver
               </button>
             </form>
           </div>

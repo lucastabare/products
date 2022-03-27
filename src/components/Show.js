@@ -5,6 +5,7 @@ import { db } from "../firebaseConfig/firebase";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { async } from "@firebase/util";
+import Header from "./Header";
 
 const MySwal = withReactContent(Swal);
 
@@ -52,12 +53,16 @@ const Show = () => {
 
   return (
     <>
+      <Header />
       <div className="container">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
-              <Link to="/create" className="btn btn-secondary mt-2 mb-2">
-                Create
+              <Link
+                to="/create"
+                className="btn btn-secondary mt-2 mb-2 btn-create"
+              >
+                Agregar Productos
               </Link>
             </div>
             <table className="table table-dark table-hover">
@@ -77,7 +82,7 @@ const Show = () => {
                     <td>
                       <Link
                         to={`/edit/${product.id}`}
-                        className="btn btn-light"
+                        className="btn btn-warning btn-pencil"
                       >
                         {" "}
                         <i className="fa-solid fa-pencil"></i>
